@@ -101,11 +101,6 @@
             <type>zip</type>
         </dependency>
         <dependency>
-            <groupId>org.wso2.carbon.identity.mgt</groupId>
-            <artifactId>org.wso2.carbon.identity.mgt.feature</artifactId>
-            <type>zip</type>
-        </dependency>
-        <dependency>
             <groupId>org.wso2.carbon.identity.commons</groupId>
             <artifactId>org.wso2.carbon.identity.common.feature</artifactId>
             <type>zip</type>
@@ -280,13 +275,13 @@
                         <id>materialize-product</id>
                         <phase>package</phase>
                         <goals>
-                            <goal>generate-profile</goal>
+                            <goal>generate-runtime</goal>
                         </goals>
                         <configuration>
                             <productConfigurationFile>${basedir}/carbon.product</productConfigurationFile>
                             <repositoryURL>file:${basedir}/target/p2-repo</repositoryURL>
-                            <targetPath>file:${basedir}/target/wso2carbon-kernel-${project.version}/osgi</targetPath>
-                            <profile>profiles/default</profile>
+                            <targetPath>file:${basedir}/target/wso2carbon-kernel-${project.version}/wso2</targetPath>
+                            <runtime>default</runtime>
                         </configuration>
                     </execution>
 
@@ -297,10 +292,10 @@
                             <goal>install</goal>
                         </goals>
                         <configuration>
-                            <profile>profiles/default</profile>
+                            <runtime>default</runtime>
                             <repositoryURL>file:${basedir}/target/p2-repo</repositoryURL>
-                            <destination>${basedir}/target/wso2carbon-kernel-${project.version}/osgi</destination>
-                            <deleteOldProfileFiles>true</deleteOldProfileFiles>
+                            <destination>${basedir}/target/wso2carbon-kernel-${project.version}/wso2</destination>
+                            <deleteOldRuntimeFiles>true</deleteOldRuntimeFiles>
                             <features>
                                 <feature>
                                     <id>org.wso2.carbon.kernel.feature</id>
